@@ -22,7 +22,7 @@ export const CALL_GET_WAITING_CHATS_LIST_SUCCESS = 'CALL_GET_WAITING_CHATS_LIST_
 export const PERFORM_SELECT_CHAT = 'PERFORM_SELECT_CHAT'
 
 /*
- * Action dispatched in thunk "performAuth". Thunk dispatched by "AuthPage" screen. Thunk used to perform authorization.
+ * Thunk dispatched by "AuthPage" screen. Action used to perform authorization.
  *
  */
 export const performAuth = () => ({
@@ -31,7 +31,7 @@ export const performAuth = () => ({
 })
 
 /*
- * Action dispatched in thunk "performAuth". Thunk dispatched by "AuthPage" screen. Thunk used to perform authorization.
+ * Action dispatched in thunk "performAuth".
  *
  */
 export const performAuthRequest = () => ({
@@ -40,7 +40,7 @@ export const performAuthRequest = () => ({
 })
 
 /*
- * Action dispatched in thunk "performAuth". Thunk dispatched by "AuthPage" screen. Thunk used to perform authorization.
+ * Action dispatched in thunk "performAuth".
  *
  */
 export const performAuthSuccess = (response) => ({
@@ -51,7 +51,7 @@ export const performAuthSuccess = (response) => ({
 })
 
 /*
- * Action dispatched in thunk "performAuth". Thunk dispatched by "AuthPage" screen. Thunk used to perform authorization.
+ * Action dispatched in thunk "performAuth".
  *
  */
 export const performAuthFailure = (error) => ({
@@ -71,7 +71,7 @@ export const performLogout = () => ({
 })
 
 /*
- * Action dispatched in thunk "performLogout". Thunk used to perform logout.
+ * Action dispatched in thunk "performLogout".
  *
  */
 export const performLogoutRequest = () => ({
@@ -80,7 +80,7 @@ export const performLogoutRequest = () => ({
 })
 
 /*
- * Action dispatched in thunk "performLogout". Thunk used to perform logout.
+ * Action dispatched in thunk "performLogout".
  *
  */
 export const performLogoutSuccess = (response) => ({
@@ -91,7 +91,7 @@ export const performLogoutSuccess = (response) => ({
 })
 
 /*
- * Action dispatched in thunk "performLogout". Thunk used to perform logout.
+ * Action dispatched in thunk "performLogout".
  *
  */
 export const performLogoutFailure = (error) => ({
@@ -102,7 +102,7 @@ export const performLogoutFailure = (error) => ({
 })
 
 /*
- * Action dispatched in thunk "performLogout".
+ * Action dispatched in thunk "performSetAuthEmail".
  *
  */
 export const performSetAuthEmail = (email) => ({
@@ -113,7 +113,7 @@ export const performSetAuthEmail = (email) => ({
 })
 
 /*
- * Action dispatched in thunk "performLogout".
+ * Action dispatched in thunk "performSetAuthPassword".
  *
  */
 export const performSetAuthPassword = (name) => ({
@@ -124,7 +124,7 @@ export const performSetAuthPassword = (name) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "performChangeScreen".
  *
  */
 export const performChangeScreen = (page) => ({
@@ -135,7 +135,7 @@ export const performChangeScreen = (page) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "performSetChatInputText".
  *
  */
 export const performSetChatInputText = (text) => ({
@@ -146,7 +146,7 @@ export const performSetChatInputText = (text) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "callGetMessagesList".
  *
  */
 export const callGetMessagesListSuccess = (msgList) => ({
@@ -157,7 +157,7 @@ export const callGetMessagesListSuccess = (msgList) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "callGetActiveChatsList".
  *
  */
 export const callGetActiveChatsListSuccess = (chatsList) => ({
@@ -168,7 +168,7 @@ export const callGetActiveChatsListSuccess = (chatsList) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "callGetWaitingChatsList".
  *
  */
 export const callGetWaitingChatsListSuccess = (chatsList) => ({
@@ -179,7 +179,7 @@ export const callGetWaitingChatsListSuccess = (chatsList) => ({
 })
 
 /*
- * Action dispatched in thunk "performChangeAuthScreen".
+ * Action dispatched in thunk "performSelectChat".
  *
  */
 export const performSelectChat = (chatId) => ({

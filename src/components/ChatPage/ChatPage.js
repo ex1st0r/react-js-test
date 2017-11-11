@@ -17,12 +17,14 @@ import Styles from './ChatPageStyles'
 class ChatPage extends Component {
 
     getHeader(){
+        let {performNavigateToChatListScreen, performLogout} = this.props
+
         return (
             <View style={Styles.header}>
                 <TouchableHighlight
                     activeOpacity={1}
                     underlayColor="transparent"
-                    onPress={this.props.performNavigateToChatListScreen.bind(this)}
+                    onPress={performNavigateToChatListScreen.bind(this)}
                     style={Styles.backButton}
                 >
                     <Text>All chats</Text>
@@ -30,7 +32,7 @@ class ChatPage extends Component {
                 <TouchableHighlight
                     activeOpacity={1}
                     underlayColor="transparent"
-                    onPress={this.props.performLogout.bind(this)}
+                    onPress={performLogout.bind(this)}
                     style={Styles.logoutButton}
                 >
                     <Text style={Styles.logoutButtonText}>X</Text>
