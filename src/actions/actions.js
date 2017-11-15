@@ -20,6 +20,7 @@ export const CALL_GET_ACTIVE_CHATS_LIST_SUCCESS = 'CALL_GET_ACTIVE_CHATS_LIST_SU
 export const CALL_GET_WAITING_CHATS_LIST_SUCCESS = 'CALL_GET_WAITING_CHATS_LIST_SUCCESS'
 
 export const PERFORM_SELECT_CHAT = 'PERFORM_SELECT_CHAT'
+export const PERFORM_INIT_CHAT_LIST = 'PERFORM_INIT_CHAT_LIST'
 
 /*
  * Thunk dispatched by "AuthPage" screen. Action used to perform authorization.

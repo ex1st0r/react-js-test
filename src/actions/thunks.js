@@ -101,10 +101,8 @@ export const performNavigateToChatListScreen = () => (dispatch, getState) => {
     let socket = new SocketManager()
 
     dispatch(thunks.callChatsList())
-        .then(() => {
-            dispatch(thunks.performChangeScreen(Enums.AppPages.CHAT_LIST_PAGE))
-        })
 
+    dispatch(thunks.performChangeScreen(Enums.AppPages.CHAT_LIST_PAGE))
 }
 
 /*
@@ -113,10 +111,8 @@ export const performNavigateToChatListScreen = () => (dispatch, getState) => {
 export const performNavigateToChatScreen = () => (dispatch, getState) => {
 
     dispatch(thunks.callGetMessagesList())
-        .then(() => {
-            dispatch(thunks.performChangeScreen(Enums.AppPages.CHAT_PAGE))
-        })
 
+    dispatch(thunks.performChangeScreen(Enums.AppPages.CHAT_PAGE))
 }
 
 /*
@@ -132,11 +128,16 @@ export const callSendMessage = () => (dispatch, getState) => {
 
     let socket = new SocketManager()
 
-    socket.sendNewMessage({chatId, token, message}).then(() => {
-        // Clear input field after send message
-        dispatch(thunks.performSetChatInputText(''))
+    socket.sendNewMessage({
+        chatId,
+        token,
+        message,
+        callback: () => {
+            // Clear input field after send message
+            dispatch(thunks.performSetChatInputText(''))
 
-        dispatch(thunks.callGetMessagesList())
+            dispatch(thunks.callGetMessagesList())
+        }
     })
 }
 
@@ -160,21 +161,27 @@ export const callGetMessagesList = () => (dispatch, getState) => {
 
     let socket = new SocketManager()
 
-    return socket.getChatMessages({chatId, token})
-        .then((msgList) => dispatch(actions.callGetMessagesListSuccess(msgList)))
+    socket.getChatMessages({
+        chatId,
+        token,
+        callback: (msgList) => dispatch(actions.callGetMessagesListSuccess(msgList))
+    })
 }
 
 /*
  * Thunk dispatched by "ChatListPage" screen. Thunk call for get chat list.
  */
 export const callChatsList = () => (dispatch, getState) => {
+    let state = getState()
+    let reducerState = state.chat
 
     let socket = new SocketManager()
 
-    return Promise.all([
-        dispatch(thunks.callGetActiveChatsList()),
-        dispatch(thunks.callGetWaitingChatsList())
-    ])
+    // socket.offChatMessages()
+
+    dispatch(thunks.callGetActiveChatsList())
+
+    dispatch(thunks.callGetWaitingChatsList())
 
 }
 
@@ -189,8 +196,10 @@ export const callGetActiveChatsList = () => (dispatch, getState) => {
 
     let socket = new SocketManager()
 
-    return socket.getActiveChats({token})
-        .then((data) => dispatch(actions.callGetActiveChatsListSuccess(data.data)))
+    socket.getActiveChats({
+        token,
+        callback: (data) => dispatch(actions.callGetActiveChatsListSuccess(data.data))
+    })
 }
 
 /*
@@ -204,8 +213,10 @@ export const callGetWaitingChatsList = () => (dispatch, getState) => {
 
     let socket = new SocketManager()
 
-    return socket.getWaitingChats({token})
-        .then((data) => dispatch(actions.callGetWaitingChatsListSuccess(data.data)))
+    socket.getWaitingChats({
+        token,
+        callback: (data) => dispatch(actions.callGetWaitingChatsListSuccess(data.data))
+    })
 }
 
 /*

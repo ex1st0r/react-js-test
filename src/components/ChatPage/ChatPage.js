@@ -44,7 +44,7 @@ class ChatPage extends Component {
     getMessageRow(msg, key){
         return (
             <View key={key} style={Styles.messageListRow}>
-                <Text>{msg.from}</Text>
+                <Text>from: {msg.from}</Text>
                 <Text>{msg.message}</Text>
             </View>
         )

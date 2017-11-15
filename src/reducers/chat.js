@@ -16,6 +16,7 @@ let initialState = {
     level: null,
     activeChatsList: [],
     waitingChatsList: [],
+    isInitChatList: false,
     chatMessagesList: [],
     chatInputText: '',
     chatId: null

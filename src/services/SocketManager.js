@@ -37,73 +37,53 @@ export default class SocketManager {
         return this._socket
     }
 
-    sendNewMessage(options = {chatId: '', token: '', message: ''}){
+    sendNewMessage(options = {chatId: '', token: '', message: '', callback: () => {}}){
         let socket = this._getSocket()
 
-        return new Promise((resolve, reject) => {
-            socket.emit('newMessage', {
-                chatId: options.chatId,
-                token: options.token,
-                message: options.message
-            })
-
-            socket.on('newMessage', (data) => {
-                resolve(data)
-            })
-
-            // If response didn't send we reject promise after responseTimeout
-            setTimeout(() => reject(), responseTimeout)
+        socket.emit('newMessage', {
+            chatId: options.chatId,
+            token: options.token,
+            message: options.message
         })
+
+        socket.on('newMessage', (data) => options.callback(data))
 
     }
 
-    getChatMessages(options = {chatId: '', token: ''}){
+    getChatMessages(options = {chatId: '', token: '', callback: () => {}}){
         let socket = this._getSocket()
 
-        return new Promise((resolve, reject) => {
-            socket.emit('getChatMessages', {
-                chatId: options.chatId,
-                token: options.token,
-                limit: 10,
-                skip: 0,
-            })
-
-            socket.on('getChatMessages', (response) => resolve(response.data))
-
-            // If response didn't send we reject promise after responseTimeout
-            setTimeout(() => reject(), responseTimeout)
+        socket.emit('getChatMessages', {
+            chatId: options.chatId,
+            token: options.token,
+            // limit: 10,
+            // skip: 0,
         })
+
+        socket.on('getChatMessages', (response) => options.callback(response.data))
 
     }
 
-    getActiveChats(options = {token: ''}){
+    getActiveChats(options = {token: '', callback: () => {}}){
         let socket = this._getSocket()
 
-        return new Promise((resolve, reject) => {
-            socket.emit('getActiveChats', {
-                token: options.token,
-            })
-
-            socket.on('getActiveChats', (data) => resolve(data))
-
-            // If response didn't send we reject promise after responseTimeout
-            setTimeout(() => reject(), responseTimeout)
+        socket.emit('getActiveChats', {
+            token: options.token,
         })
+
+        socket.on('getActiveChats', (data) => options.callback(data))
+
     }
 
-    getWaitingChats(options = {token: ''}){
+    getWaitingChats(options = {token: '', callback: () => {}}){
         let socket = this._getSocket()
 
-        return new Promise((resolve, reject) => {
-            socket.emit('getWaitingChats', {
-                token: options.token,
-            })
-
-            socket.on('getWaitingChats', (data) => resolve(data))
-
-            // If response didn't send we reject promise after responseTimeout
-            setTimeout(() => reject(), responseTimeout)
+        socket.emit('getWaitingChats', {
+            token: options.token,
         })
+
+        socket.on('getWaitingChats', (data) => options.callback(data))
+
     }
 
 }
